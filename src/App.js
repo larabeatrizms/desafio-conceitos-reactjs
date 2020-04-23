@@ -15,15 +15,15 @@ function App() {
 
   async function handleAddRepository() {
     const response = await api.post("repositories", {
-      title: `Novo repositorio ${Date.now()}`,
+      title: `New repository ${Date.now()}`,
       url:
         "https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/faq-desafios",
       techs: ["React", "Node.js"],
     });
 
-    const repositorie = response.data;
+    const repository = response.data;
 
-    setRepositories([...repositories, repositorie]);
+    setRepositories([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
@@ -32,10 +32,6 @@ function App() {
         const repositoryIndex = repositories.findIndex(
           (repository) => repository.id === id
         );
-
-        // if (repositoryIndex < 0) {
-        //   return response.status(400).json({ error: "repository Not Found" });
-        // }
 
         const repositoriesNew = repositories;
         repositoriesNew.splice(repositoryIndex, 1);
